@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "tar": "^6.1.11"
+  },
+  "packageManager": "yarn@3.2.1"
+}
