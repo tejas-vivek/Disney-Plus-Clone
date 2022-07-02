@@ -4,8 +4,12 @@ import ImgSlider from './ImgSlider'
 import Viewers from './Viewers'
 import Movies from './Movies'
 import db from '../firebase'
+import { useDispatch } from "react-redux"
+import { setMovies } from "../features/movie/movieSlice"
 
 function Home() {
+
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     db.collection("movies").onSnapshot((snapshot)=>{
@@ -13,7 +17,7 @@ function Home() {
         // console.log(doc.data());
         return { id: doc.id, ...doc.data()}
       })
-      console.log(tempMovies);
+      dispatch(setMovies(tempMovies));
     })
   }, [])
 
